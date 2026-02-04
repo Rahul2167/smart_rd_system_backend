@@ -5,6 +5,6 @@ RUN gradle build --no-daemon -x test
 
 FROM eclipse-temurin:21-jre
 EXPOSE 8080
-COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
+COPY --from=build /home/gradle/src/build/libs/app.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 # Force trigger redeploy
