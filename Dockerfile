@@ -1,7 +1,7 @@
 FROM gradle:jdk21 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN chmod +x gradlew && ./gradlew clean bootJar --no-daemon
+RUN gradle clean bootJar --no-daemon
 
 FROM eclipse-temurin:21-jre
 EXPOSE 8080
