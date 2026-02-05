@@ -2,6 +2,7 @@ package com.rd.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.CommandLineRunner;
 
 @SpringBootApplication
 public class RdSystemProjectApplication {
@@ -11,4 +12,13 @@ public class RdSystemProjectApplication {
 		System.out.println("success......");
 	}
 
+	@org.springframework.context.annotation.Bean
+	public org.springframework.boot.CommandLineRunner debugDataSource(
+			@org.springframework.beans.factory.annotation.Value("${spring.datasource.url}") String url) {
+		return args -> {
+			System.out.println("==========================================");
+			System.out.println("DEBUG: ACTIVE DATASOURCE URL IS: " + url);
+			System.out.println("==========================================");
+		};
+	}
 }
