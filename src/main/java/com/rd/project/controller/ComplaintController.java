@@ -37,17 +37,17 @@ public class ComplaintController {
             System.out.println("Received complaint: " + complaint);
             System.out.println("User Phone: " + complaint.getUserPhone());
             System.out.println("User Name: " + complaint.getUserName());
-            
+
             // Set current date if not set
             if (complaint.getDate() == null) {
                 complaint.setDate(java.time.LocalDate.now());
             }
-            
+
             // Set default status if not set
             if (complaint.getStatus() == null) {
                 complaint.setStatus("pending");
             }
-            
+
             Complaint savedComplaint = complaintRepository.save(complaint);
             return ResponseEntity.ok(savedComplaint);
         } catch (Exception e) {
@@ -65,16 +65,16 @@ public class ComplaintController {
                 Complaint updatedComplaint = existingComplaint.get();
                 updatedComplaint.setStatus(complaint.getStatus());
                 updatedComplaint.setAdminResponse(complaint.getAdminResponse());
-                
+
                 // Set resolved date if status is "resolved" or "closed"
-                if (("resolved".equalsIgnoreCase(complaint.getStatus()) || 
-                     "closed".equalsIgnoreCase(complaint.getStatus())) && 
-                    complaint.getResolvedDate() == null) {
+                if (("resolved".equalsIgnoreCase(complaint.getStatus()) ||
+                        "closed".equalsIgnoreCase(complaint.getStatus())) &&
+                        complaint.getResolvedDate() == null) {
                     updatedComplaint.setResolvedDate(java.time.LocalDate.now());
                 } else {
                     updatedComplaint.setResolvedDate(complaint.getResolvedDate());
                 }
-                
+
                 complaintRepository.save(updatedComplaint);
                 return ResponseEntity.ok(updatedComplaint);
             }

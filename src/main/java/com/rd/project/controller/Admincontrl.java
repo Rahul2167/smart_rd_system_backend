@@ -117,8 +117,5 @@ public class Admincontrl {
             e.printStackTrace();
             return ResponseEntity.badRequest().body("Login failed: " + e.getMessage());
         }
-    }}
-
-    
-    
-    
+    }
+}

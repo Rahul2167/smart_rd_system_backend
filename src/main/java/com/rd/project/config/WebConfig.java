@@ -5,16 +5,18 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer
-{
+public class WebConfig implements WebMvcConfigurer {
 	@Override
-	public void addCorsMappings(CorsRegistry registry)
-	{
+	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-		.allowedOriginPatterns("*") //use allowed origin pattern
-		.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTION")
-		.allowedHeaders("*")
-		.allowCredentials(true)
-		.maxAge(3600);
+				.allowedOriginPatterns("https://*.onrender.com", "http://localhost:5173", "http://localhost:3000", "*") // Explicitly
+																														// allow
+																														// Render
+																														// &
+																														// Localhost
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Fixed typo: OPTION -> OPTIONS
+				.allowedHeaders("*")
+				.allowCredentials(true)
+				.maxAge(3600);
 	}
 }
