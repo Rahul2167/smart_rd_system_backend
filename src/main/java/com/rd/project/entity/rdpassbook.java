@@ -1,6 +1,7 @@
 package com.rd.project.entity;
 
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,8 +16,9 @@ public class rdpassbook {
 	private Integer pid;
 	private Integer rid;
 	@Column(name = "rddate")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate rd_date;
-	private Long rd_amount;
+	private String rd_amount;
 	private Integer late_days;
 	private Integer fine_amount;
 	private Integer is_settled;
@@ -45,11 +47,11 @@ public class rdpassbook {
 		this.rd_date = rd_date;
 	}
 
-	public Long getRd_amount() {
+	public String getRd_amount() {
 		return rd_amount;
 	}
 
-	public void setRd_amount(Long rd_amount) {
+	public void setRd_amount(String rd_amount) {
 		this.rd_amount = rd_amount;
 	}
 

@@ -8,7 +8,7 @@ public class RdSystemProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RdSystemProjectApplication.class, args);
-		System.out.println("success......");
+		System.out.println("✅ BACKEND STARTED SUCCESSFULLY - DB CONNECTION CHECK PENDING...");
 	}
 
 }
